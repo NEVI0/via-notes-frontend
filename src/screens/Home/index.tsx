@@ -1,9 +1,9 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { FiHash, FiMoon, FiSun, FiPlus } from 'react-icons/fi';
+import { FiBookmark, FiMoon, FiSun, FiPlus } from 'react-icons/fi';
 
 import NoteItem from '../../components/NoteItem';
 import InfoModal from '../../components/InfoModal';
-import CreateNote from '../../components/CreateNote';
+import NoteModal from '../../components/NoteModal';
 
 import AppContext, { AppContextType } from '../../contexts/AppContext';
 import NoteContext, { NoteContextType } from '../../contexts/NoteContext';
@@ -30,26 +30,25 @@ const Home: React.FC = () => {
 		deleteNote	
 	} = useContext<NoteContextType>(NoteContext);
 
-	const [ showFormModal, setShowFormModal ] = useState<boolean>(false);
+	const [ showNoteModal, setShowNoteModal ] = useState<boolean>(false);
 	const [ showInfoModal, setShowInfoModal ] = useState<boolean>(false);
 
 	const [ selectedStatus, setSelectedStatus ] = useState<string>('none');
-	const [ editableNote, setEditableNote ] = useState<NoteType | any>(null);
+	const [ selectedNote, setSelectedNote ] = useState<NoteType | any>(null);
 
 	const handleEdit = (note: NoteType) => {
-		setEditableNote(note);
-		setShowFormModal(true);
+		setSelectedNote(note);
+		setShowNoteModal(true);
 	}
 
-	const handleCloseModal = () => {
-		setShowFormModal(false);
-		if (editableNote) setEditableNote(null);
+	const handleCloseNoteModal = () => {
+		setShowNoteModal(false);
+		if (selectedNote) setSelectedNote(null);
 	}
 
 	useEffect(() => {
 		(async () => {
 			try {
-				getUser();
 				await getStatus();
 			} catch (err) {
 				alert(err);
@@ -60,7 +59,11 @@ const Home: React.FC = () => {
 	useEffect(() => {
 		(async () => {
 			try {
-				if (user) await getNotes(user.id, selectedStatus)
+				if (user) {
+					await getNotes(user.id, selectedStatus);
+				} else {
+					getUser();
+				}
 			} catch (err) {
 				alert(err);
 			}
@@ -71,7 +74,7 @@ const Home: React.FC = () => {
 		<div className="Home">
 
 			{ user != null && showInfoModal && <InfoModal onClose={ () => setShowInfoModal(false) } /> }
-			{ showFormModal && <CreateNote onClose={ handleCloseModal } note={ editableNote } /> }
+			{ user != null && showNoteModal && <NoteModal onClose={ handleCloseNoteModal } note={ selectedNote } /> }
 
 			<div className="wallpaper"></div>
 
@@ -89,18 +92,17 @@ const Home: React.FC = () => {
 							</div>
 						</div>
 
-						<button className="btn-circle" title="Nova Nota" onClick={ changeTheme }>
-							{
-								isDarkMode ? (
-									<FiSun size={ 24 } className="icon" />
-								) : (
-									<FiMoon size={ 24 } className="icon" />
-								)
-							}
-						</button>
-						<button className="btn-circle" title="Nova Nota" onClick={ () => setShowFormModal(true) }>
-							<FiPlus size={ 24 } className="icon" />
-						</button>
+						<div className="buttons">
+							<button className="btn-circle" title="Nova Nota" onClick={ changeTheme }>
+								{ isDarkMode ? <FiSun size={ 24 } className="icon" /> : <FiMoon size={ 24 } className="icon" /> }
+							</button>
+
+							<div className="divider"></div>
+
+							<button className="btn-circle" title="Nova Nota" onClick={ () => setShowNoteModal(true) }>
+								<FiPlus size={ 24 } className="icon" />
+							</button>
+						</div>
 					</div>	
 
 					<div className="sub-header">
@@ -115,13 +117,15 @@ const Home: React.FC = () => {
 						</p>
 
 						<div className="input-box">
-							<FiHash size={ 20 } className="icon" />
+							<FiBookmark size={ 20 } className="icon" />
 
 							<select value={ selectedStatus } onChange={ (ev) => setSelectedStatus(ev.target.value) }>
 								<option value="none">Todas</option>
 								{
-									statusArray.map(status => (
-										<option value={ status.id_status }>{ status.name }</option>
+									statusArray.map((status, index) => (
+										<option key={ index.toString() } value={ status.id_status }>
+											{ status.name }
+										</option>
 									))
 								}
 							</select>
@@ -131,12 +135,12 @@ const Home: React.FC = () => {
 					<div className="list">
 						{
 							notesArray.length > 0 ?
-								notesArray.map((item, index) => (
+								notesArray.map((note, index) => (
 									<NoteItem
 										key={ index.toString() }
-										note={ item }
-										onEdit={ () => handleEdit(item) }
-										onDelete={ () => deleteNote(item.id_note) }
+										note={ note }
+										onEdit={ () => handleEdit(note) }
+										onDelete={ () => deleteNote(note.id_note) }
 									/>
 								))
 							: (

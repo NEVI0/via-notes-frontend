@@ -1,5 +1,5 @@
 .Home .wallpaper {
-	padding: 150px;
+	padding: 200px 0;
 	background-image: 
 		var(--wallpaper),
 		url(../../assets/wallpaper.jpg);
@@ -35,6 +35,15 @@
 	display: flex;
 	flex-direction: row;
 	align-items: center;
+}
+.Home .container .content .header .buttons {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-evenly;
+}
+.Home .container .content .header .buttons .divider {
+	padding: 0 10px;
 }
 .Home .container .content .sub-header {
 	padding: 20px;
@@ -87,17 +96,20 @@
 	.Home .container {
 		margin: 175px 20px;
 	}
+	.Home .container .content .header,
+	.Home .user-box {
+		flex-direction: column;
+		align-items: center;
+	}
 	.Home .user-box img {
-		width: 50px;
-		height: 50px;
-		border-radius: 50px;
-		margin-right: 20px;
+		width: 90px;
+		height: 90px;
+		border-radius: 90px;
+		margin-right: 0;
 	}
-	.Home .user-box h3 {
-		font-size: 16px;
-	}
-	.Home .user-box h4 {
-		font-size: 14px;
+	.Home .user-box .user-info {
+		text-align: center;
+		margin: 20px 0;
 	}
 
 }

@@ -4,8 +4,8 @@
 :root {
 	--font: 'Nunito', sans-serif;
 
-	--color-primary: #0de4a3;
-	--color-primary-light: #51f0c0;
+	--color-primary: #25cc9a;
+	--color-primary-light: #07963e;
 		
 	--color-gray: #999999;
 	--color-gray-light: #eeeeee;
@@ -13,7 +13,7 @@
 	--color-text: #0d0d0f;
 	--color-text-light: #fff;
 
-	--wallpaper: linear-gradient(rgba(13, 233, 167, 0.384), rgba(255, 255, 255, 0.363), rgba(255, 255, 255, 0.596));
+	--wallpaper: linear-gradient(rgba(13, 233, 167, 0.384), rgba(255, 255, 255, 0.363), rgba(255, 255, 255, 0.397));
 }
 
 html {
@@ -28,7 +28,7 @@ body {
 }
 body.dark {
 	--color-primary: #1cb688;
-	--color-primary-light: #34daa8;
+	--color-primary-light: #07963e;
 		
 	--color-gray: #999999;
 	--color-gray-light: #0f0f11;
@@ -53,7 +53,7 @@ h1, h2, h3, h4, h5, p, span, b {
 	transition: 0.5s ease all;
 	outline: none;
 	cursor: pointer;
-	font-weight: bold;
+	font-family: 'Bree Serif', serif;
 }
 .btn.btn-primary {
 	border: 2px solid var(--color-primary);
