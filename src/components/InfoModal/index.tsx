@@ -19,7 +19,7 @@ const InfoModal: React.FC<{ onClose(): void; }> = ({ onClose }) => {
 				</span>
 
 				<p>
-					Está informação está armazenada no seu local storage. Se você limpa-lo, perderá as suas anotações atuais!
+					Está informação é responsável por armazenar apenas as suas anotações/todo's e recuperá-las. Se você limpar o local storage, perderá as suas anotações atuais!
 				</p>
 			</div>
 		</div>
