@@ -1,7 +1,9 @@
 import React from 'react';
-import { FiTrash2, FiEdit2 } from 'react-icons/fi';
+import { FiTrash2, FiEdit2, FiCalendar, FiBookmark } from 'react-icons/fi';
 
 import { NoteType } from '../../utils/types';
+import { formatDate } from '../../utils/functions';
+
 import './styles.css';
 
 interface NoteItem {
@@ -16,7 +18,17 @@ const NoteItem: React.FC<NoteItem> = ({ note, onEdit, onDelete }) => {
 		<div className={`NoteItem ${note.status.replace(' ', '-')}`}>
 			<div className="info">
 				<p>{ note.description }</p>
-				<span># { note.status }</span>
+				
+				<div className="rows">
+					<div className="row">
+						<FiBookmark size={ 18 } className="icon" />
+						<p>{ note.status }</p>
+					</div>
+					<div className="row">
+						<FiCalendar size={ 18 } className="icon" />
+						<p>{ formatDate(note.created_at) }</p>
+					</div>
+				</div>
 			</div>
 
 			<div className="buttons">
