@@ -10,9 +10,6 @@ Repositório criado com o propósito de mostrar minhas capacidades como desenvol
 ```
 
 - Baixe o código do **[backend](https://github.com/NEVI0/via-notes-backend)** na sua máquina e siga as instruções para rodá-lo;
-```
-~ node --version
-```
 
 - Clone o repositório na sua máquina:
 ```
