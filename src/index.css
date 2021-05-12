@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
+
+:root {
+	--font: 'Nunito', sans-serif;
+
+	--color-primary: #0de4a3;
+	--color-primary-light: #51f0c0;
+		
+	--color-gray: #999999;
+	--color-gray-light: #eeeeee;
+	
+	--color-text: #0d0d0f;
+	--color-text-light: #fff;
+
+	--wallpaper: linear-gradient(rgba(13, 233, 167, 0.384), rgba(255, 255, 255, 0.363), rgba(255, 255, 255, 0.596));
+}
+
+html {
+	scroll-behavior: smooth;
+}
+body {
+	margin: 0 !important;
+	padding: 0 !important;
+	font-family: var(--font);
+	background-color: var(--color-gray-light);
+	transition: 0.5s ease all;
+}
+body.dark {
+	--color-primary: #1cb688;
+	--color-primary-light: #34daa8;
+		
+	--color-gray: #999999;
+	--color-gray-light: #0f0f11;
+	
+	--color-text: #fff;
+	--color-text-light: #1c1c22;
+
+	--wallpaper: linear-gradient(rgba(13, 233, 167, 0.384), rgba(148, 148, 148, 0.363), rgba(49, 49, 49, 0.596));
+}
+code {
+  	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+h1, h2, h3, h4, h5, p, span, b {
+	margin: 0 !important;
+	color: var(--color-text);
+}
+
+.btn {
+	font-family: var(--font);
+	font-size: 16px;
+	padding: 5px 20px;
+	transition: 0.5s ease all;
+	outline: none;
+	cursor: pointer;
+	font-weight: bold;
+}
+.btn.btn-primary {
+	border: 2px solid var(--color-primary);
+	background-color: var(--color-primary);
+	color: #fff;
+}
+.btn.btn-primary:hover,
+.btn.btn-primary:focus {
+	border-color: var(--color-primary-light);
+	background-color: var(--color-primary-light);
+}
+.btn.btn-secondary {
+	background-color: transparent;
+	border: 2px solid var(--color-primary);
+	color: var(--color-primary);
+}
+.btn.btn-secondary:hover,
+.btn.btn-secondary:focus {
+	border-color: var(--color-primary-light);
+	color: var(--color-primary-light);
+}
+
+.btn-circle {
+	background-color: transparent;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50px;
+	border: none;
+	background-color: transparent;
+	width: 35px;
+	height: 35px;
+	cursor: pointer;
+	transition: 0.5s ease all;
+}
+.btn-circle .icon {
+	color: var(--color-primary);
+	transition: 0.5s ease all;
+}
+.btn-circle:hover,
+.btn-circle:focus {
+	background-color: var(--color-primary);
+}
+.btn-circle:hover .icon,
+.btn-circle:focus .icon {
+	color: #fff;
+}
+
+.input-box {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding-right: 5px;
+}
+.input-box .icon {
+	color: var(--color-primary);
+	padding: 5px;
+}
+.input-box select {
+	background-color: transparent;
+	padding: 5px;
+	border: none;
+	outline: none;
+	font-size: 14px;
+	color: var(--color-text);
+}
+.input-box select option {
+	color: var(--color-text);
+	background-color: var(--color-text-light);
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+}
+::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+	background: #888;
+}
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
