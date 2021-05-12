@@ -43,6 +43,7 @@ const Home: React.FC = () => {
 
 	const handleCloseNoteModal = () => {
 		setShowNoteModal(false);
+		setSelectedStatus('none');
 		if (selectedNote) setSelectedNote(null);
 	}
 
