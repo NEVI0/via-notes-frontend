@@ -28,6 +28,7 @@
 .Home .container .content {
 	margin: 20px 0;
 	background-color: var(--color-text-light);
+	transition: 0.5s ease all;
 }
 .Home .container .content .header {
 	padding: 20px;
