@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { FiHash, FiX } from 'react-icons/fi';
+import { FiBookmark, FiX } from 'react-icons/fi';
 
 import AppContext, { AppContextType } from '../../contexts/AppContext';
 import NoteContext, { NoteContextType } from '../../contexts/NoteContext';
@@ -8,7 +8,7 @@ import StatusContext, { StatusContextType } from '../../contexts/StatusContext';
 import { NoteType } from '../../utils/types';
 import './styles.css';
 
-const CreateNote: React.FC<{ note: NoteType; onClose(): void; }> = ({ note, onClose }) => {
+const NoteModal: React.FC<{ note: NoteType; onClose(): void; }> = ({ note, onClose }) => {
 
 	const {
 		user
@@ -24,7 +24,7 @@ const CreateNote: React.FC<{ note: NoteType; onClose(): void; }> = ({ note, onCl
 	const [ selectedStatus, setSelectedStatus ] = useState<string>(note ? note.id_status.toString() : 'none');
 	const [ description, setDescription ] = useState<string>(note ? note.description : '');
 
-	const handleAction = () => {
+	const handleMainAction = () => {
 		if (!description || selectedStatus == 'none') return; 
 		
 		if (note) {
@@ -42,7 +42,7 @@ const CreateNote: React.FC<{ note: NoteType; onClose(): void; }> = ({ note, onCl
 	}
 
 	return (
-		<div className="CreateNote" id="CreateNote">
+		<div className="NoteModal">
 			<div className="box">
 				
 				<div className="header">
@@ -59,14 +59,17 @@ const CreateNote: React.FC<{ note: NoteType; onClose(): void; }> = ({ note, onCl
 						onChange={ (ev) => setDescription(ev.target.value) }
 						placeholder="Faça suas anotações aqui..."
 					></textarea>
+
 					<div className="input-box">
-						<FiHash size={ 20 } className="icon" />
+						<FiBookmark size={ 20 } className="icon" />
 
 						<select value={ selectedStatus } onChange={ (ev) => setSelectedStatus(ev.target.value) }>
 							<option value="none">Selecionar</option>
 							{
-								statusArray.map(status => (
-									<option value={ status.id_status }>{ status.name }</option>
+								statusArray.map((status, index) => (
+									<option key={ index.toString() } value={ status.id_status }>
+										{ status.name }
+									</option>
 								))
 							}
 						</select>
@@ -78,7 +81,7 @@ const CreateNote: React.FC<{ note: NoteType; onClose(): void; }> = ({ note, onCl
 						Limpar
 					</button>
 
-					<button className="btn btn-primary" onClick={ handleAction }>
+					<button className="btn btn-primary" onClick={ handleMainAction }>
 						{ note ? 'Editar' : 'Criar' }
 					</button>
 				</div>
@@ -89,4 +92,4 @@ const CreateNote: React.FC<{ note: NoteType; onClose(): void; }> = ({ note, onCl
 
 }
 
-export default CreateNote;
+export default NoteModal;
