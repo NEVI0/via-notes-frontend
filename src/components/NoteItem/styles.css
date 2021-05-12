@@ -1,0 +1,49 @@
+.NoteItem {
+	padding: 15px;
+	margin-bottom: 20px;
+	cursor: default;
+	transition: 0.5s ease all;
+	display: flex;
+	flex-direction: row;	
+}
+.NoteItem .info {
+	flex: 1;
+	margin-right: 20px;
+}
+.NoteItem .info span {
+	font-weight: 100;
+	color: var(--color-gray);
+	padding-top: 20px;
+}
+.NoteItem .info p {
+	text-align: justify;
+}
+.NoteItem .buttons button {
+	width: 30px;
+	height: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50px;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	background-color: transparent;
+	transition: 0.5s ease all;
+}
+.NoteItem .buttons button .icon { 
+	color: var(--color-gray);
+	transition: 0.5s ease all;
+}
+.NoteItem.Finalizado {
+	border-left: 5px solid #3aa508;
+}
+.NoteItem.A-Fazer {
+	border-left: 5px solid #ced11a;
+}
+.NoteItem.Importante {
+	border-left: 5px solid #bb1a1a;
+}
+.NoteItem:hover {
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.25);
+}
