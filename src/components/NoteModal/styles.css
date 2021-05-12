@@ -4,19 +4,28 @@
 	left: 0;
 	right: 0;
 	bottom: 0;
-	opacity: from 0 to 1;
 	width: 100%;
 	height: 100%;
 	display: flex;
+	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-evenly;
 	transition: 0.5s ease all;
 	background-color: rgba(0, 0, 0, 0.25);
 }
-.NoteModal .box {
+.NoteModal .box,
+.NoteModal .message-box {
 	background-color: var(--color-text-light);
 	width: 500px;
 	transition: 0.5s ease all;
+}
+.NoteModal .message-box {
+	padding: 20px 0;
+	text-align: center;
+}
+.NoteModal .message-box p {
+	color: #bb1a1a;
+	font-weight: bold;
 }
 .NoteModal .box .header {
 	display: flex;
@@ -60,7 +69,8 @@
 
 @media (max-width: 767.98px) {
 
-	.NoteModal .box {
+	.NoteModal .box,
+	.NoteModal .message-box {
 		width: 90%;
 	}
 	.NoteModal .box .header h2 {

@@ -24,8 +24,17 @@ const NoteModal: React.FC<{ note: NoteType; onClose(): void; }> = ({ note, onClo
 	const [ selectedStatus, setSelectedStatus ] = useState<string>(note ? note.id_status.toString() : 'none');
 	const [ description, setDescription ] = useState<string>(note ? note.description : '');
 
+	const [ formError, setFormError ] = useState<string>('');
+
 	const handleMainAction = () => {
-		if (!description || selectedStatus == 'none') return; 
+		if (!description) {
+			setFormError('Preencha o campo de anotação!');
+			return;
+		}
+		if (selectedStatus == 'none') {
+			setFormError('Selecione o status da sua anotação!');
+			return;
+		}
 		
 		if (note) {
 			updateNote(note.id_note, parseInt(selectedStatus), description);
@@ -33,10 +42,12 @@ const NoteModal: React.FC<{ note: NoteType; onClose(): void; }> = ({ note, onClo
 			createNote(user.id, parseInt(selectedStatus), description)
 		}
 
+		handleCleanForm();
 		onClose();
 	}
 
 	const handleCleanForm = () => {
+		setFormError('');
 		setDescription('');
 		setSelectedStatus('none');
 	}
@@ -87,6 +98,14 @@ const NoteModal: React.FC<{ note: NoteType; onClose(): void; }> = ({ note, onClo
 				</div>
 
 			</div>
+
+			{
+				formError != '' && (
+					<div className="message-box">
+						<p>{ formError }</p>
+					</div>
+				)
+			}
 		</div>
 	);
 
