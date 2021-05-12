@@ -25,12 +25,7 @@ export const StatusProvider: React.FC = ({ children }) => {
 	}
 
 	return (
-		<StatusContext.Provider
-			value={{
-				statusArray,
-				getStatus
-			}}
-		>
+		<StatusContext.Provider value={{ statusArray, getStatus }}>
 			{ children }
 		</StatusContext.Provider>
 	);

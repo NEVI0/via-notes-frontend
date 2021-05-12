@@ -75,16 +75,7 @@ export const NoteProvider: React.FC = ({ children }) => {
 	}
 
 	return (
-		<NoteContext.Provider
-			value={{
-				notesArray,
-
-				getNotes,
-				createNote,
-				updateNote,
-				deleteNote
-			}}
-		>
+		<NoteContext.Provider value={{ notesArray, getNotes, createNote, updateNote, deleteNote }}>
 			{ children }
 		</NoteContext.Provider>
 	);
