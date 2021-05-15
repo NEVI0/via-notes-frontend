@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import Home from '../screens/Home';
-import Auth from '../screens/Auth';
+import Signin from '../screens/Auth/Signin';
+import Signup from '../screens/Auth/Signup';
 
 import UserContext, { UserContextType } from '../contexts/UserContext';
 
@@ -14,8 +15,9 @@ const Routes: React.FC = () => {
 const AuthFlow: React.FC = () => {
 	return (
 		<Switch>
-			<Route path="/" component={ Auth } exact />
-			<Route component={ Auth } />
+			<Route path="/" component={ Signin } exact />
+			<Route path="/signup" component={ Signup } />
+			<Route component={ Signin } />
 		</Switch>
 	)
 }

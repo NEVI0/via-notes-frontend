@@ -1,0 +1,131 @@
+.Signin {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+}
+.Signin .box {
+	background-color: var(--color-text-light);
+	width: 90%;
+	height: 80%;
+	display: flex;
+	flex-direction: row;
+	box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.253);
+	transition: 0.5s ease all;
+}
+.Signin .col {
+	display: flex;
+	flex-direction: column;
+	transition: 0.5s ease all;
+	padding: 20px;
+}
+.Signin .col.col-4 {
+	flex: 0.4;
+	background-image: url(../../../assets/auth-light-wallpaper.png);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+body.dark .Signin .col.col-4 {
+	background-image: url(../../../assets/auth-dark-wallpaper.png);
+}
+.Signin .col.col-6 {
+	flex: 0.6;
+}
+.Signin .col.wallpaper {
+	background-image: 
+		linear-gradient(rgba(0, 0, 0, 0.705), rgba(0, 0, 0, 0.781)),
+		url(../../../assets/wallpaper-auth.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.Signin .col.wallpaper img {
+	width: 300px;
+}
+
+.Signin .col .header {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+.Signin .col .header img {
+	width: 34px;
+}
+.Signin .col .header h2 {
+	color: var(--color-text);
+	border-left: 5px solid var(--color-primary);
+	padding-left: 10px;
+	font-family: 'Bree Serif', serif;
+	font-size: 30px;
+	letter-spacing: 2px;
+}
+
+.Signin .col .content {
+	padding: 40px 0;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+}
+.Signin .col .content .input-box.margin {
+	margin: 20px 0;
+}
+.Signin .col .content .forgot-password {
+	display: flex;
+	justify-content: flex-end;
+}
+.Signin .col .content .forgot-password p {
+	color: var(--color-gray);
+}
+.Signin .col .content .forgot-password p a {
+	outline: none;
+	text-decoration: none;
+	color: var(--color-primary-light);
+}
+
+.Signin .col .footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+@media (max-width: 767.98px) {
+
+	.Signin .box {
+		width: 95%;
+		height: 95%;
+		flex-direction: column;
+	}
+	.Signin .col.col-4 {
+		flex: 0.65;
+	}
+	.Signin .col.col-6 {
+		flex: 0.35;
+	}
+	.Signin .col.wallpaper img {
+		width: 175px;
+	}
+
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+	
+	.Signin .box {
+		height: 90%;
+	}
+	.Signin .col.col-4 {
+		flex: 0.5;
+	}
+	.Signin .col.col-6 {
+		flex: 0.5;
+	}
+	.Signin .col.wallpaper img {
+		width: 250px;
+	}
+
+}
