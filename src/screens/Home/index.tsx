@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { FiBookmark, FiMoon, FiSun, FiPlus, FiLogOut } from 'react-icons/fi';
+import { FiBookmark, FiMoon, FiSun, FiPlus, FiLogOut, FiTrash2 } from 'react-icons/fi';
 
 import Alert from '../../components/Alert';
 import NoteItem from '../../components/NoteItem';
@@ -29,7 +29,8 @@ const Home: React.FC = () => {
 	} = useContext<NoteContextType>(NoteContext);
 	const {
 		user,
-		signout
+		signout,
+		deleteAccount
 	} = useContext<UserContextType>(UserContext);
 	const {
 		statusArray,
@@ -39,8 +40,10 @@ const Home: React.FC = () => {
 		clearStatusContextError
 	} = useContext<StatusContextType>(StatusContext);
 
+	const [ showLoading, setShowLoading ] = useState<boolean>(false);
 	const [ showNoteModal, setShowNoteModal ] = useState<boolean>(false);
 	const [ showDeleteNoteModal, setShowDeleteNoteModal ] = useState<boolean>(false);
+	const [ showDeletAccountModal, setShowDeletAccountModal ] = useState<boolean>(false);
 
 	const [ selectedStatus, setSelectedStatus ] = useState<string>('none');
 	const [ selectedNote, setSelectedNote ] = useState<NoteType | any>(null);
@@ -60,6 +63,13 @@ const Home: React.FC = () => {
 		setSelectedNote(null);
 		setShowDeleteNoteModal(false);
 		setSelectedStatus(!selectedStatus ? 'none' : '');
+	}
+
+	const handleDeleteAccount = async () => {
+		setShowDeletAccountModal(false);
+		setShowLoading(true);
+		await deleteAccount();
+		setShowLoading(false);
 	}
 
 	const handleCloseNoteModal = () => {
@@ -105,6 +115,16 @@ const Home: React.FC = () => {
 					/>
 				)
 			}
+			{
+				showDeletAccountModal && (
+					<Alert
+						message="Tem certeza que deseja deletar a sua conta? Suas anotações seram deletadas também."
+						onClose={ () => setShowDeletAccountModal(false) }
+						hasAction={ true }
+						onAction={ handleDeleteAccount }
+					/>
+				)
+			}
 
 			<div className="wallpaper"></div>
 
@@ -126,13 +146,17 @@ const Home: React.FC = () => {
 							<button className="btn-circle" title="Sair" onClick={ signout }>
 								<FiLogOut size={ 24 } className="icon" />
 							</button>
-							
-							<button className="btn-circle margin" title="Nova Nota" onClick={ changeTheme }>
+						
+							<button className="btn-circle margin" title="Mudar Tema" onClick={ changeTheme }>
 								{ isDarkMode ? <FiSun size={ 24 } className="icon" /> : <FiMoon size={ 24 } className="icon" /> }
 							</button>
 
-							<button className="btn-circle" title="Nova Nota" onClick={ () => setShowNoteModal(true) }>
+							<button className="btn-circle margin" title="Nova Nota" onClick={ () => setShowNoteModal(true) }>
 								<FiPlus size={ 24 } className="icon" />
+							</button>
+
+							<button className="btn-circle danger margin" title="Excluir Conta" onClick={ () => setShowDeletAccountModal(true) }>
+								<FiTrash2 size={ 24 } className="icon" />
 							</button>
 						</div>
 					</div>	

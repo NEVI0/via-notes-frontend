@@ -44,7 +44,7 @@
 	justify-content: space-evenly;
 }
 .Home .container .content .header .buttons .margin {
-	margin: 0 10px;
+	margin-left: 10px;
 }
 .Home .container .content .sub-header {
 	padding: 20px;
@@ -63,9 +63,6 @@
 	flex-direction: row;
 	align-items: center;
 	flex: 1
-}
-.Home .user-box .user-info {
-	cursor: pointer;
 }
 .Home .user-box img {
 	width: 70px;

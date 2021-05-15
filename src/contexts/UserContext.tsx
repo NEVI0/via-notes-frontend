@@ -1,7 +1,7 @@
 import React, { useState, useEffect, createContext } from 'react';
 
 import server from '../services/server';
-import { UserType } from '../utils/types';
+import { HttpResponse, UserType } from '../utils/types';
 
 export interface UserContextType {
 	user: UserType;
@@ -9,7 +9,9 @@ export interface UserContextType {
 
 	signin(email: string, password: string): Promise<UserType>;
 	signup(name: string, email: string, password: string, conf_password: string): Promise<UserType>;
+	deleteAccount(): Promise<HttpResponse>;
 	signout(): void;
+
 	createUserContextError(err: any): void;
 	clearUserContextError(): void;
 }
@@ -76,6 +78,16 @@ export const UserProvider: React.FC = ({ children }) => {
 		localStorage.setItem('@USER', JSON.stringify(user));
 	}
 
+	const deleteAccount = async () => {
+		try {
+			const resp = await server.delete(`/user/${user.id_user}`);
+			signout();
+			return resp.data;
+		} catch (err) {
+			createUserContextError(err);
+		}
+	}
+
 	const createUserContextError = (err: any) => {
 		if (typeof err == 'string') {
 			setUserContextError(err);
@@ -93,7 +105,7 @@ export const UserProvider: React.FC = ({ children }) => {
 	const clearUserContextError = () => setUserContextError('');
 
 	return (
-		<UserContext.Provider 
+		<UserContext.Provider
 			value={{ 
 				user,
 				userContextError,
@@ -101,6 +113,7 @@ export const UserProvider: React.FC = ({ children }) => {
 				signin,
 				signup,
 				signout,
+				deleteAccount,
 
 				createUserContextError,
 				clearUserContextError
