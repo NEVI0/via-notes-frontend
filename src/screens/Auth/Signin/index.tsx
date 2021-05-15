@@ -40,7 +40,7 @@ const Signin: React.FC<RouteComponentProps> = ({ history }) => {
 	return (
 		<div className="Signin">
 			<div className="box">
-				<div className="col col-4">
+				<div className="col col-sm">
 					<div className="header">
 						<h2>Via Notes</h2>
 						<img src={ icon } />
@@ -80,7 +80,7 @@ const Signin: React.FC<RouteComponentProps> = ({ history }) => {
 					</div>
 				</div>
 			
-				<div className="col col-6 wallpaper">
+				<div className="col col-md wallpaper">
 					<img src={ vialaser } />
 				</div>
 			</div>

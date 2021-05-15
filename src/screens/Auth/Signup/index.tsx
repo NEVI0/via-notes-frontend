@@ -40,7 +40,7 @@ const Signup: React.FC<RouteComponentProps> = ({ history }) => {
 	return (
 		<div className="Signup">
 			<div className="box">
-				<div className="col col-4">
+				<div className="col col-sm">
 					<div className="header">
 						<h2>VN - Cadastro</h2>
 					</div>
@@ -49,7 +49,7 @@ const Signup: React.FC<RouteComponentProps> = ({ history }) => {
 						
 						<div className="input-box">
 							<FiUser size={ 24 } className="icon" />
-							<input type="text" name="name" placeholder="Seus nome" value={ name } onChange={ ev => setName(ev.target.value) } />
+							<input type="text" name="name" placeholder="Seu nome" value={ name } onChange={ ev => setName(ev.target.value) } />
 						</div>
 						<div className="input-box margin">
 							<FiMail size={ 24 } className="icon" />
@@ -83,7 +83,7 @@ const Signup: React.FC<RouteComponentProps> = ({ history }) => {
 					</div>
 				</div>
 			
-				<div className="col col-6 wallpaper">
+				<div className="col col-md wallpaper">
 					<img src={ vialaser } />
 				</div>
 			</div>

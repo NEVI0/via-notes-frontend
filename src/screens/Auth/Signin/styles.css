@@ -4,6 +4,7 @@
 	align-items: center;
 	justify-content: center;
 	height: 100vh;
+	padding: 20px
 }
 .Signin .box {
 	background-color: var(--color-text-light);
@@ -20,17 +21,17 @@
 	transition: 0.5s ease all;
 	padding: 20px;
 }
-.Signin .col.col-4 {
+.Signin .col.col-sm {
 	flex: 0.4;
 	background-image: url(../../../assets/auth-light-wallpaper.png);
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
 }
-body.dark .Signin .col.col-4 {
+body.dark .Signin .col.col-sm {
 	background-image: url(../../../assets/auth-dark-wallpaper.png);
 }
-.Signin .col.col-6 {
+.Signin .col.col-md {
 	flex: 0.6;
 }
 .Signin .col.wallpaper {
@@ -101,10 +102,10 @@ body.dark .Signin .col.col-4 {
 		height: 95%;
 		flex-direction: column;
 	}
-	.Signin .col.col-4 {
+	.Signin .col.col-sm {
 		flex: 0.65;
 	}
-	.Signin .col.col-6 {
+	.Signin .col.col-md {
 		flex: 0.35;
 	}
 	.Signin .col.wallpaper img {
@@ -118,10 +119,10 @@ body.dark .Signin .col.col-4 {
 	.Signin .box {
 		height: 90%;
 	}
-	.Signin .col.col-4 {
+	.Signin .col.col-sm {
 		flex: 0.5;
 	}
-	.Signin .col.col-6 {
+	.Signin .col.col-md {
 		flex: 0.5;
 	}
 	.Signin .col.wallpaper img {

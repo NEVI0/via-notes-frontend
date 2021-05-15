@@ -5,7 +5,7 @@
 	--font: 'Nunito', sans-serif;
 
 	--color-primary: #25cc9a;
-	--color-primary-light: #07963e;
+	--color-primary-light: #2be773;
 		
 	--color-gray: #999999;
 	--color-gray-light: #eeeeee;
@@ -28,7 +28,7 @@ body {
 }
 body.dark {
 	--color-primary: #1cb688;
-	--color-primary-light: #07963e;
+	--color-primary-light: #00ff62;
 		
 	--color-gray: #999999;
 	--color-gray-light: #0f0f11;

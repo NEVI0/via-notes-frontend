@@ -20,17 +20,17 @@
 	transition: 0.5s ease all;
 	padding: 20px;
 }
-.Signup .col.col-4 {
+.Signup .col.col-sm {
 	flex: 0.4;
 	background-image: url(../../../assets/auth-light-wallpaper.png);
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
 }
-body.dark .Signup .col.col-4 {
+body.dark .Signup .col.col-sm {
 	background-image: url(../../../assets/auth-dark-wallpaper.png);
 }
-.Signup .col.col-6 {
+.Signup .col.col-md {
 	flex: 0.6;
 }
 .Signup .col.wallpaper {
@@ -101,10 +101,10 @@ body.dark .Signup .col.col-4 {
 		height: 95%;
 		flex-direction: column;
 	}
-	.Signup .col.col-4 {
+	.Signup .col.col-sm {
 		flex: 0.65;
 	}
-	.Signup .col.col-6 {
+	.Signup .col.col-md {
 		flex: 0.35;
 	}
 	.Signup .col.wallpaper img {
@@ -118,10 +118,10 @@ body.dark .Signup .col.col-4 {
 	.Signup .box {
 		height: 90%;
 	}
-	.Signup .col.col-4 {
+	.Signup .col.col-sm {
 		flex: 0.5;
 	}
-	.Signup .col.col-6 {
+	.Signup .col.col-md {
 		flex: 0.5;
 	}
 	.Signup .col.wallpaper img {

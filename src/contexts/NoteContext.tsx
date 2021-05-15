@@ -5,6 +5,7 @@ import server from '../services/server';
 
 export interface NoteContextType {
 	notesArray: Array<NoteType>;
+	noteContextError: string;
 
 	getNotes(
 		id_user: number,
@@ -23,6 +24,9 @@ export interface NoteContextType {
 	deleteNote(
 		id_note: number
 	): Promise<HttpResponse>;
+
+	createNoteContextError(err: any): void;
+	clearNoteContextError(): void;
 }
 
 const NoteContext: React.Context<NoteContextType | any> = createContext({});
@@ -30,6 +34,7 @@ const NoteContext: React.Context<NoteContextType | any> = createContext({});
 export const NoteProvider: React.FC = ({ children }) => {
 	
 	const [ notesArray, setNotesArray ] = useState<Array<NoteType>>([]);
+	const [ noteContextError, setNoteContextError ] = useState<string>('');
 
 	const getNotes = async (id_user: number, id_status: string) => {
 		try {
@@ -43,7 +48,7 @@ export const NoteProvider: React.FC = ({ children }) => {
 			return resp.data.notes;
 
 		} catch (err) {
-			console.log(err);
+			createNoteContextError(err);
 		}
 	}
 
@@ -52,7 +57,7 @@ export const NoteProvider: React.FC = ({ children }) => {
 			const resp = await server.post('/note', { id_user, id_status, description });
 			return resp.data.message;
 		} catch (err) {
-			alert(err);
+			createNoteContextError(err);
 		}
 	}
 
@@ -61,7 +66,7 @@ export const NoteProvider: React.FC = ({ children }) => {
 			const resp = await server.put(`/note/${id_note}`, { id_status, description });
 			return resp.data.message;
 		} catch (err) {
-			alert(err);
+			createNoteContextError(err);
 		}
 	}
 
@@ -70,12 +75,41 @@ export const NoteProvider: React.FC = ({ children }) => {
 			const resp = await server.delete(`/note/${id_note}`);
 			return resp.data.message;
 		} catch (err) {
-			alert(err);
+			createNoteContextError(err);
 		}
 	}
 
+	const createNoteContextError = (err: any) => {
+		if (typeof err == 'string') {
+			setNoteContextError(err);
+		} else {
+			if (err.response.data) {
+				setNoteContextError(err.response.data.message);
+			} else if (err.message) {
+				setNoteContextError(err.message);
+			} else {
+				setNoteContextError('Não foi possível identificar o problema com o processamento do site! Tente novamente.');
+			}
+		}
+	}
+
+	const clearNoteContextError = () => setNoteContextError('');
+
 	return (
-		<NoteContext.Provider value={{ notesArray, getNotes, createNote, updateNote, deleteNote }}>
+		<NoteContext.Provider
+			value={{
+				notesArray,
+				noteContextError,
+
+				getNotes,
+				createNote,
+				updateNote,
+				deleteNote,
+
+				createNoteContextError,
+				clearNoteContextError
+			}}
+		>
 			{ children }
 		</NoteContext.Provider>
 	);

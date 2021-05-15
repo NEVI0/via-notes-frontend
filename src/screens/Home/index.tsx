@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { FiBookmark, FiMoon, FiSun, FiPlus, FiLogOut } from 'react-icons/fi';
 
+import Alert from '../../components/Alert';
 import NoteItem from '../../components/NoteItem';
 import NoteModal from '../../components/NoteModal';
 
@@ -19,18 +20,24 @@ const Home: React.FC = () => {
 		changeTheme
 	} = useContext<AppContextType>(AppContext);
 	const {
-		statusArray,
-		getStatus
-	} = useContext<StatusContextType>(StatusContext);
-	const {
 		notesArray,
+		noteContextError,
 		getNotes,
-		deleteNote	
+		deleteNote,
+		createNoteContextError,
+		clearNoteContextError
 	} = useContext<NoteContextType>(NoteContext);
 	const {
 		user,
 		signout
 	} = useContext<UserContextType>(UserContext);
+	const {
+		statusArray,
+		statusContextError,
+		getStatus,
+		createStatusContextError,
+		clearStatusContextError
+	} = useContext<StatusContextType>(StatusContext);
 
 	const [ showNoteModal, setShowNoteModal ] = useState<boolean>(false);
 
@@ -53,7 +60,7 @@ const Home: React.FC = () => {
 			try {
 				await getStatus();
 			} catch (err) {
-				alert(err);
+				createStatusContextError(err);
 			}
 		})();
 	}, []);
@@ -63,13 +70,16 @@ const Home: React.FC = () => {
 			try {
 				await getNotes(user.id_user, selectedStatus);
 			} catch (err) {
-				alert(err);
+				createNoteContextError(err);
 			}
 		})();
 	}, [selectedStatus]);
 
 	return (
 		<div className="Home">
+
+			{ statusContextError != '' && <Alert message={ statusContextError } onClose={ clearStatusContextError } /> }
+			{ noteContextError != '' && <Alert message={ noteContextError } onClose={ clearNoteContextError } /> }
 
 			{ user != null && showNoteModal && <NoteModal onClose={ handleCloseNoteModal } note={ selectedNote } /> }
 
@@ -121,7 +131,7 @@ const Home: React.FC = () => {
 							<select value={ selectedStatus } onChange={ (ev) => setSelectedStatus(ev.target.value) }>
 								<option value="none">Todas</option>
 								{
-									statusArray.map((status, index) => (
+									statusArray.length > 0 && statusArray.map((status, index) => (
 										<option key={ index.toString() } value={ status.id_status }>
 											{ status.name }
 										</option>
@@ -143,7 +153,9 @@ const Home: React.FC = () => {
 									/>
 								))
 							: (
-								<p className="no-notes">Sem anotações! Tente criar uma clicando no  <b>ícone de mais</b>.</p>
+								<p className="no-notes">
+									Sem anotações! Tente criar uma clicando no  <b>ícone de mais</b>.
+								</p>
 							)
 						}
 					</div>

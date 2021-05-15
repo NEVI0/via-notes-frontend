@@ -77,7 +77,6 @@ export const UserProvider: React.FC = ({ children }) => {
 	}
 
 	const createUserContextError = (err: any) => {
-		console.log(err)
 		if (typeof err == 'string') {
 			setUserContextError(err);
 		} else {
