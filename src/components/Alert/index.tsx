@@ -1,21 +1,26 @@
 import React from 'react';
-import { FiAlertCircle, FiX } from 'react-icons/fi';
+import { FiX } from 'react-icons/fi';
 
 import './styles.css';
 
 const Alert: React.FC<{ message: string; onClose(): void; }> = ({ message, onClose }) => {
 	return (
 		<div className="Alert">
-			<div className="box">
+			<div className="alert-box">
 				
-				<FiAlertCircle size={ 24 } className="icon" />
+				<div className="header">
+					<h2>Alerta!</h2>
 
-				<div>
-					<h3>Alerta!</h3>
-					<p>{ message }</p>
+					<button className="btn-circle danger" onClick={ onClose }>
+						<FiX size={ 24 } className="icon" />
+					</button>
 				</div>
 
-				<FiX size={ 24 } className="icon close" onClick={ onClose } />
+				<div className="content">
+					<p>
+						{ message }
+					</p>
+				</div>
 
 			</div>
 		</div>

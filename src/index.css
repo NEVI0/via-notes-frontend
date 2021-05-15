@@ -9,7 +9,8 @@
 		
 	--color-gray: #999999;
 	--color-gray-light: #eeeeee;
-	
+	--color-red: #cf3030;
+
 	--color-text: #0d0d0f;
 	--color-text-light: #fff;
 
@@ -32,6 +33,7 @@ body.dark {
 		
 	--color-gray: #999999;
 	--color-gray-light: #0f0f11;
+	--color-red: #ad2222;
 	
 	--color-text: #fff;
 	--color-text-light: #1c1c22;
@@ -75,6 +77,11 @@ h1, h2, h3, h4, h5, p, span, b {
 	border-color: var(--color-primary-light);
 	color: var(--color-primary-light);
 }
+.btn.btn-danger {
+	border: 2px solid var(--color-red);
+	background-color: var(--color-red);
+	color: #fff;
+}
 
 .btn-circle {
 	background-color: transparent;
@@ -93,9 +100,17 @@ h1, h2, h3, h4, h5, p, span, b {
 	color: var(--color-primary);
 	transition: 0.5s ease all;
 }
+.btn-circle.danger .icon {
+	color: var(--color-red);
+	transition: 0.5s ease all;
+}
 .btn-circle:hover,
 .btn-circle:focus {
 	background-color: var(--color-primary);
+}
+.btn-circle.danger:hover,
+.btn-circle.danger:focus {
+	background-color: var(--color-red);
 }
 .btn-circle:hover .icon,
 .btn-circle:focus .icon {
