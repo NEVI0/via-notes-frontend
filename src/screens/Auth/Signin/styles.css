@@ -111,6 +111,9 @@ body.dark .Signin .col.col-sm {
 	.Signin .col.wallpaper img {
 		width: 175px;
 	}
+	.Signin .col .header img {
+		width: 26px;
+	}
 
 }
 
