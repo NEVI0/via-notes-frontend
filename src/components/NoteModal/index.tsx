@@ -11,6 +11,7 @@ import './styles.css';
 const NoteModal: React.FC<{ note: NoteType; onClose(): void; }> = ({ note, onClose }) => {
 
 	const {
+		noteContextError,
 		createNote,
 		updateNote
 	} = useContext<NoteContextType>(NoteContext);
@@ -24,37 +25,25 @@ const NoteModal: React.FC<{ note: NoteType; onClose(): void; }> = ({ note, onClo
 	const [ selectedStatus, setSelectedStatus ] = useState<string>(note ? note.id_status.toString() : 'none');
 	const [ description, setDescription ] = useState<string>(note ? note.description : '');
 
-	const [ formError, setFormError ] = useState<string>('');
-
-	const handleMainAction = () => {
-		if (!description) {
-			setFormError('Preencha o campo de anotação!');
-			return;
-		}
-		if (selectedStatus == 'none') {
-			setFormError('Selecione o status da sua anotação!');
-			return;
+	const handleMainAction = async () => {
+		if (note) {
+			await updateNote(note.id_note, parseInt(selectedStatus), description);
+		} else {
+			await createNote(user.id_user, parseInt(selectedStatus), description)
 		}
 		
-		if (note) {
-			updateNote(note.id_note, parseInt(selectedStatus), description);
-		} else {
-			createNote(user.id_user, parseInt(selectedStatus), description)
-		}
-
 		handleCleanForm();
 		onClose();
 	}
 
 	const handleCleanForm = () => {
-		setFormError('');
 		setDescription('');
 		setSelectedStatus('none');
 	}
 
 	return (
 		<div className="NoteModal">
-			<div className="box">
+			<div className="note-box">
 				
 				<div className="header">
 					<h2>{ note ? 'Editar Nota' : 'Criar Nota' }</h2>
@@ -98,14 +87,6 @@ const NoteModal: React.FC<{ note: NoteType; onClose(): void; }> = ({ note, onClo
 				</div>
 
 			</div>
-
-			{
-				formError != '' && (
-					<div className="message-box">
-						<p>{ formError }</p>
-					</div>
-				)
-			}
 		</div>
 	);
 

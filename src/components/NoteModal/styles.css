@@ -13,27 +13,18 @@
 	transition: 0.5s ease all;
 	background-color: rgba(0, 0, 0, 0.25);
 }
-.NoteModal .box,
-.NoteModal .message-box {
+.NoteModal .note-box {
 	background-color: var(--color-text-light);
-	width: 500px;
+	width: 550px;
 	transition: 0.5s ease all;
 }
-.NoteModal .message-box {
-	padding: 20px 0;
-	text-align: center;
-}
-.NoteModal .message-box p {
-	color: #bb1a1a;
-	font-weight: bold;
-}
-.NoteModal .box .header {
+.NoteModal .note-box .header {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	padding: 20px;
 }
-.NoteModal .box .header h2 {
+.NoteModal .note-box .header h2 {
 	color: var(--color-text);
 	border-left: 5px solid var(--color-primary);
 	padding-left: 10px;
@@ -41,25 +32,26 @@
 	font-size: 30px;
 	letter-spacing: 2px;
 }
-.NoteModal .box .content {
+.NoteModal .note-box .content {
 	padding: 0 20px;
 	display: flex;
 	flex-direction: row;
 }
-.NoteModal .box .content textarea {
+.NoteModal .note-box .content textarea {
 	width: 100%;
 	height: 300px;
 	resize: none;
 	border: none;
 	outline: none;
 	font-size: 16px;
+	font-family: var(--font);
 	background-color: transparent;
 	color: var(--color-text);
 }
-.NoteModal .box .content .input-box {
+.NoteModal .note-box .content .select-box {
 	align-self: end;
 }
-.NoteModal .box .footer {
+.NoteModal .note-box .footer {
 	padding: 20px;
 	display: flex;
 	flex-direction: row;
@@ -69,14 +61,13 @@
 
 @media (max-width: 767.98px) {
 
-	.NoteModal .box,
-	.NoteModal .message-box {
+	.NoteModal .note-box {
 		width: 90%;
 	}
-	.NoteModal .box .header h2 {
+	.NoteModal .note-box .header h2 {
 		font-size: 25px;
 	}
-	.NoteModal .box .content {
+	.NoteModal .note-box .content {
 		padding: 0 20px;
 		display: flex;
 		flex-direction: column;
