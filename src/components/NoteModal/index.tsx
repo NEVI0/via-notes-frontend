@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { FiBookmark, FiX } from 'react-icons/fi';
 
-import AppContext, { AppContextType } from '../../contexts/AppContext';
+import UserContext, { UserContextType } from '../../contexts/UserContext';
 import NoteContext, { NoteContextType } from '../../contexts/NoteContext';
 import StatusContext, { StatusContextType } from '../../contexts/StatusContext';
 
@@ -11,12 +11,12 @@ import './styles.css';
 const NoteModal: React.FC<{ note: NoteType; onClose(): void; }> = ({ note, onClose }) => {
 
 	const {
-		user
-	} = useContext<AppContextType>(AppContext);
-	const {
 		createNote,
 		updateNote
 	} = useContext<NoteContextType>(NoteContext);
+	const {
+		user
+	} = useContext<UserContextType>(UserContext);
 	const {
 		statusArray
 	} = useContext<StatusContextType>(StatusContext);
@@ -39,7 +39,7 @@ const NoteModal: React.FC<{ note: NoteType; onClose(): void; }> = ({ note, onClo
 		if (note) {
 			updateNote(note.id_note, parseInt(selectedStatus), description);
 		} else {
-			createNote(user.id, parseInt(selectedStatus), description)
+			createNote(user.id_user, parseInt(selectedStatus), description)
 		}
 
 		handleCleanForm();
@@ -71,7 +71,7 @@ const NoteModal: React.FC<{ note: NoteType; onClose(): void; }> = ({ note, onClo
 						placeholder="Faça suas anotações aqui..."
 					></textarea>
 
-					<div className="input-box">
+					<div className="select-box">
 						<FiBookmark size={ 20 } className="icon" />
 
 						<select value={ selectedStatus } onChange={ (ev) => setSelectedStatus(ev.target.value) }>
