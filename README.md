@@ -2,17 +2,19 @@
 
 Repositório criado com o propósito de mostrar minhas capacidades como desenvolvedor full-stack, utilizando o **[React](https://pt-br.reactjs.org/)** para a criação de uma aplicação TODO LIST.
 
+Você pode acessar o projeto clicando **[aqui!](https://main.d7wwexdxzj8w.amplifyapp.com/)**
+
 ### :scroll: Informações do projeto frontend
 
 Projeto criado através do comando `npx create-react-app --template typescript` utilizando o **CRA**. Toda a parte de codificação está dentro da pasta `/via-notes-frontend/src`, contendo:
 
-- :pushpin: **[assets](https://github.com/NEVI0/via-notes-frontend/tree/main/src/assets)**;
-- :books: **[components](https://github.com/NEVI0/via-notes-frontend/tree/main/src/components)**;
-- :closed_lock_with_key: **[contexts](https://github.com/NEVI0/via-notes-frontend/tree/main/src/contexts)**;
-- :construction: **[routes](https://github.com/NEVI0/via-notes-frontend/tree/main/src/routes)**;
-- :tv: **[screens](https://github.com/NEVI0/via-notes-frontend/tree/main/src/screens)**;
-- :satellite: **[services](https://github.com/NEVI0/via-notes-frontend/tree/main/src/services)**;
-- :bulb: **[utils](https://github.com/NEVI0/via-notes-frontend/tree/main/src/utils)**;
+- :pushpin: **[assets](https://github.com/NEVI0/via-notes-frontend/tree/main/src/assets)**
+- :books: **[components](https://github.com/NEVI0/via-notes-frontend/tree/main/src/components)**
+- :closed_lock_with_key: **[contexts](https://github.com/NEVI0/via-notes-frontend/tree/main/src/contexts)**
+- :construction: **[routes](https://github.com/NEVI0/via-notes-frontend/tree/main/src/routes)**
+- :tv: **[screens](https://github.com/NEVI0/via-notes-frontend/tree/main/src/screens)**
+- :satellite: **[services](https://github.com/NEVI0/via-notes-frontend/tree/main/src/services)**
+- :bulb: **[utils](https://github.com/NEVI0/via-notes-frontend/tree/main/src/utils)**
 
 Cada pasta é responsável por alguma funcionalidade dentro da aplicação, deixando o minímo possível de responsábilidade para uma única tela. Um exemplo são os **[components](https://github.com/NEVI0/via-notes-frontend/tree/main/src/components)** que são partes de código estáticas que podem ser usadas em diferentes telas, como é o caso das telas de **autenticação** e a tela **principal**.
 
@@ -28,7 +30,9 @@ A pasta **[services](https://github.com/NEVI0/via-notes-frontend/tree/main/src/s
 
 As **[utils](https://github.com/NEVI0/via-notes-frontend/tree/main/src/utils)** são arquivos que ajudam de alguma forma a aplicação em seu processo, como é o caso das tipagens de dados presentes nos arquivos e funções reutilizaveis.
 
-### :wrench: Como configurar o projeto
+Foi utilizado o **[AWS Amplify](https://aws.amazon.com/pt/amplify/)** como host para a aplicação.
+
+### :hammer_and_wrench: Como configurar o projeto
 
 - Instale o **[Node](https://nodejs.org/en/download/)** na sua máquina e verifique a instalação pelo comando abaixo:
 ```
