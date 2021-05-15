@@ -63,13 +63,13 @@ export const UserProvider: React.FC = ({ children }) => {
 	}
 
 	const signout = () => {
-		server.defaults.baseURL = 'http://192.168.1.42:4500/open-api';
+		server.defaults.baseURL = 'https://via-notes-backend.herokuapp.com/open-api';
 		setUser(null);
 		localStorage.removeItem('@USER');
 	}
 
 	const saveUser = (user: UserType) => {
-		server.defaults.baseURL = 'http://192.168.1.42:4500/api';
+		server.defaults.baseURL = 'https://via-notes-backend.herokuapp.com/api';
 		server.defaults.headers = { authorization: user.token };
 
 		setUser(user);
