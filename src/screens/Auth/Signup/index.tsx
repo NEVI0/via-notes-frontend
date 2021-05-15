@@ -30,9 +30,11 @@ const Signup: React.FC<RouteComponentProps> = ({ history }) => {
 
 	const handleSignup = async () => {
 		try {
+			setShowLoading(true);
 			const resp = await signup(name, email, password, confPassword);
 			if (!resp) setShowLoading(false);
 		} catch (err) {
+			setShowLoading(false);
 			createUserContextError(err);
 		}
 	}
@@ -88,7 +90,7 @@ const Signup: React.FC<RouteComponentProps> = ({ history }) => {
 				</div>
 			</div>
 
-			{ showLoading && <Loading message="Autenticando os dados..." /> }
+			{ showLoading && <Loading /> }
 			{ userContextError != '' && <Alert message={ userContextError } onClose={ clearUserContextError } /> }
 		</div>
 	);
