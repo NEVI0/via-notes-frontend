@@ -35,7 +35,7 @@ export const NoteProvider: React.FC = ({ children }) => {
 		try {
 			
 			let url = `/note/${id_user}?id_status=`;
-			if (id_status != 'none') url += id_status;
+			if (!id_status || id_status != 'none') url += id_status;
 
 			const resp = await server.get(url);
 			setNotesArray(resp.data.notes);
@@ -43,7 +43,7 @@ export const NoteProvider: React.FC = ({ children }) => {
 			return resp.data.notes;
 
 		} catch (err) {
-			alert(err);
+			console.log(err);
 		}
 	}
 

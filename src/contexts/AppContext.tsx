@@ -1,10 +1,7 @@
 import React, { useState, useEffect, createContext } from 'react';
-import { UserType } from '../utils/types';
 
 export interface AppContextType {
-	user: UserType;
 	isDarkMode: boolean;
-	getUser(): void;
 	changeTheme(): void;
 }
 
@@ -12,14 +9,11 @@ const AppContext: React.Context<AppContextType | any> = createContext({});
 
 export const AppProvider: React.FC = ({ children }) => {
 	
-	const [ user, setUser ] = useState<UserType>();
 	const [ isDarkMode, setIsDarkMode ] = useState<boolean>(false);
 
 	useEffect(() => {
 		
-		getUser();
-
-		const storagedTheme = localStorage.getItem('@theme');
+		const storagedTheme = localStorage.getItem('@THEME');
 		const bodyEl = document.getElementById('body');
 
 		if (storagedTheme) {
@@ -32,51 +26,35 @@ export const AppProvider: React.FC = ({ children }) => {
 			}
 		} else {
 			setIsDarkMode(true);
-			localStorage.setItem('@theme', 'light');
+			localStorage.setItem('@THEME', 'light');
 		}
 
 	}, []);
 
-	const getUser = () => {
-		const storagedUser: any = localStorage.getItem('@user');
-
-		if (!storagedUser) {
-			
-			const id = Math.floor(Math.random() * 10000);
-			const created_at = new Date();
-
-			localStorage.setItem('@user', JSON.stringify({ id, created_at }));
-			setUser({ id, created_at });
-
-		} else {
-			setUser(JSON.parse(storagedUser));
-		}
-	}
-
 	const changeTheme = () => {
 
-		const storagedTheme = localStorage.getItem('@theme');
+		const storagedTheme = localStorage.getItem('@THEME');
 		const bodyEl = document.getElementById('body');
 
 		if (storagedTheme) {
 			if (storagedTheme == 'dark') {
 				setIsDarkMode(false);
-				localStorage.setItem('@theme', 'light');
+				localStorage.setItem('@THEME', 'light');
 				bodyEl?.classList.replace('dark', 'light');
 			} else {
 				setIsDarkMode(true);
-				localStorage.setItem('@theme', 'dark');
+				localStorage.setItem('@THEME', 'dark');
 				bodyEl?.classList.replace('light', 'dark');
 			}
 		} else {
 			setIsDarkMode(false);
-			localStorage.setItem('@theme', 'light');
+			localStorage.setItem('@THEME', 'light');
 		}
 
 	}
 
 	return (
-		<AppContext.Provider value={{ user, isDarkMode, getUser, changeTheme }}>
+		<AppContext.Provider value={{ isDarkMode, changeTheme }}>
 			{ children }
 		</AppContext.Provider>
 	);

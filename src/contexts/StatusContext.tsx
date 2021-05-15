@@ -20,7 +20,7 @@ export const StatusProvider: React.FC = ({ children }) => {
 			setStatusArray(resp.data.status);
 			return resp.data.status;
 		} catch (err) {
-			alert(err);
+			console.log(err);
 		}
 	}
 

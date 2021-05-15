@@ -43,8 +43,8 @@
 	align-items: center;
 	justify-content: space-evenly;
 }
-.Home .container .content .header .buttons .divider {
-	padding: 0 10px;
+.Home .container .content .header .buttons .margin {
+	margin: 0 10px;
 }
 .Home .container .content .sub-header {
 	padding: 20px;
