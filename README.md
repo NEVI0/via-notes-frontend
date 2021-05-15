@@ -64,6 +64,8 @@ ou
 ~ yarn install
 ```
 
+- Troque toda string `https://via-notes-backend.herokuapp.com` dentro da aplicação por `http://localhost:4500` ou `http://<SEU_IP>:4500` para poder rodar localmente.
+
 ### :zap: Como rodar o projeto
 
 - Comando para rodar em **modo de desenvolvimento**:
