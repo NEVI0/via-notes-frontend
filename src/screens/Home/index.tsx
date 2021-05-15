@@ -40,6 +40,7 @@ const Home: React.FC = () => {
 	} = useContext<StatusContextType>(StatusContext);
 
 	const [ showNoteModal, setShowNoteModal ] = useState<boolean>(false);
+	const [ showDeleteNoteModal, setShowDeleteNoteModal ] = useState<boolean>(false);
 
 	const [ selectedStatus, setSelectedStatus ] = useState<string>('none');
 	const [ selectedNote, setSelectedNote ] = useState<NoteType | any>(null);
@@ -49,9 +50,21 @@ const Home: React.FC = () => {
 		setShowNoteModal(true);
 	}
 
+	const handleShowDeleteNoteModal = (note: NoteType) => {
+		setSelectedNote(note);
+		setShowDeleteNoteModal(true);
+	}
+
+	const handleDeleteNote = async () => {
+		await deleteNote(selectedNote.id_note);
+		setSelectedNote(null);
+		setShowDeleteNoteModal(false);
+		setSelectedStatus(!selectedStatus ? 'none' : '');
+	}
+
 	const handleCloseNoteModal = () => {
 		setShowNoteModal(false);
-		setSelectedStatus('');
+		setSelectedStatus(!selectedStatus ? 'none' : '');
 		if (selectedNote) setSelectedNote(null);
 	}
 
@@ -82,6 +95,16 @@ const Home: React.FC = () => {
 			{ noteContextError != '' && <Alert message={ noteContextError } onClose={ clearNoteContextError } /> }
 
 			{ showNoteModal && <NoteModal onClose={ handleCloseNoteModal } note={ selectedNote } /> }
+			{
+				showDeleteNoteModal && selectedNote && (
+					<Alert
+						message="Tem certeza que deseja deletar a anotação?"
+						onClose={ () => setShowDeleteNoteModal(false) }
+						hasAction={ true }
+						onAction={ handleDeleteNote }
+					/>
+				)
+			}
 
 			<div className="wallpaper"></div>
 
@@ -149,7 +172,7 @@ const Home: React.FC = () => {
 										key={ index.toString() }
 										note={ note }
 										onEdit={ () => handleEdit(note) }
-										onDelete={ () => deleteNote(note.id_note) }
+										onDelete={ () => handleShowDeleteNoteModal(note) }
 									/>
 								))
 							: (
