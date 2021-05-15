@@ -81,7 +81,7 @@ const Home: React.FC = () => {
 			{ statusContextError != '' && <Alert message={ statusContextError } onClose={ clearStatusContextError } /> }
 			{ noteContextError != '' && <Alert message={ noteContextError } onClose={ clearNoteContextError } /> }
 
-			{ user != null && showNoteModal && <NoteModal onClose={ handleCloseNoteModal } note={ selectedNote } /> }
+			{ showNoteModal && <NoteModal onClose={ handleCloseNoteModal } note={ selectedNote } /> }
 
 			<div className="wallpaper"></div>
 
