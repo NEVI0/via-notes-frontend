@@ -3,7 +3,14 @@ import { FiX } from 'react-icons/fi';
 
 import './styles.css';
 
-const Alert: React.FC<{ message: string; onClose(): void; }> = ({ message, onClose }) => {
+interface Alert { 
+	message: string; 
+	onClose(): void; 
+	hasAction?: boolean; 
+	onAction?(): void; 
+}
+
+const Alert: React.FC<Alert> = ({ message, onClose, hasAction, onAction }) => {
 	return (
 		<div className="Alert">
 			<div className="alert-box">
@@ -21,6 +28,16 @@ const Alert: React.FC<{ message: string; onClose(): void; }> = ({ message, onClo
 						{ message }
 					</p>
 				</div>
+
+				{
+					hasAction && (
+						<div className="footer">
+							<button className="btn btn-danger" onClick={ onAction }>
+								Ok
+							</button>
+						</div>
+					)
+				}
 
 			</div>
 		</div>
