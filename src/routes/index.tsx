@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import Home from '../screens/Home';
-import Signin from '../screens/Auth/Signin';
-import Signup from '../screens/Auth/Signup';
+import Home from '../screens/app/Home';
+import Signin from '../screens/auth/Signin';
+import Signup from '../screens/auth/Signup';
 
 import UserContext, { UserContextType } from '../contexts/UserContext';
 

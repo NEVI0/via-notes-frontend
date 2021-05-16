@@ -114,6 +114,9 @@ body.dark .Signin .col.col-sm {
 	.Signin .col .header img {
 		width: 26px;
 	}
+	.Signin .col .content .forgot-password p {
+		font-size: 14px;
+	}
 
 }
 

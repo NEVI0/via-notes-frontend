@@ -16,7 +16,9 @@ const NoteItem: React.FC<NoteItem> = ({ note, onEdit, onDelete }) => {
 	return (
 		<div className="NoteItem" style={{ borderColor: note.color }}>
 			<div className="info" onClick={ onEdit }>
-				<p>{ note.description }</p>
+				<p>
+					{ note.description }
+				</p>
 				
 				<div className="rows">
 					<div className="row">

@@ -1,16 +1,17 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { FiBookmark, FiMoon, FiSun, FiPlus, FiLogOut, FiTrash2 } from 'react-icons/fi';
 
-import Alert from '../../components/Alert';
-import NoteItem from '../../components/NoteItem';
-import NoteModal from '../../components/NoteModal';
+import Alert from '../../../components/Alert';
+import Loading from '../../../components/Loading';
+import NoteItem from '../../../components/NoteItem';
+import NoteModal from '../../../components/NoteModal';
 
-import AppContext, { AppContextType } from '../../contexts/AppContext';
-import UserContext, { UserContextType } from '../../contexts/UserContext';
-import NoteContext, { NoteContextType } from '../../contexts/NoteContext';
-import StatusContext, { StatusContextType } from '../../contexts/StatusContext';
+import AppContext, { AppContextType } from '../../../contexts/AppContext';
+import UserContext, { UserContextType } from '../../../contexts/UserContext';
+import NoteContext, { NoteContextType } from '../../../contexts/NoteContext';
+import StatusContext, { StatusContextType } from '../../../contexts/StatusContext';
 
-import { NoteType } from '../../utils/types';
+import { NoteType } from '../../../utils/types';
 import './styles.css';
 
 const Home: React.FC = () => {
@@ -68,8 +69,8 @@ const Home: React.FC = () => {
 	const handleDeleteAccount = async () => {
 		setShowDeletAccountModal(false);
 		setShowLoading(true);
-		await deleteAccount();
-		setShowLoading(false);
+		const resp = await deleteAccount();
+		if (!resp) setShowLoading(false);
 	}
 
 	const handleCloseNoteModal = () => {
@@ -100,6 +101,8 @@ const Home: React.FC = () => {
 
 	return (
 		<div className="Home">
+
+			{ showLoading && <Loading /> }
 
 			{ statusContextError != '' && <Alert message={ statusContextError } onClose={ clearStatusContextError } /> }
 			{ noteContextError != '' && <Alert message={ noteContextError } onClose={ clearNoteContextError } /> }

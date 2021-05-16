@@ -13,11 +13,6 @@
 	margin-right: 10px;
 	cursor: pointer;
 }
-.NoteItem .info span {
-	font-weight: 100;
-	color: var(--color-gray);
-	padding-top: 20px;
-}
 .NoteItem .info p {
 	text-align: justify;
 }
