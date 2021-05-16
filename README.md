@@ -32,6 +32,19 @@ As **[utils](https://github.com/NEVI0/via-notes-frontend/tree/main/src/utils)** 
 
 Foi utilizado o **[AWS Amplify](https://aws.amazon.com/pt/amplify/)** como host para a aplicação.
 
+### :key: Funcionalidades do projeto
+
+- Autenticação de usuário
+- Cadastro de usuário
+- Exclusão de usuário
+
+- Criação de anotações
+- Listagem de anotações
+- Atualização de anotações
+- Exclusão de anotações
+
+- Tema light e dark
+
 ### :hammer_and_wrench: Como configurar o projeto
 
 - Instale o **[Node](https://nodejs.org/en/download/)** na sua máquina e verifique a instalação pelo comando abaixo:
