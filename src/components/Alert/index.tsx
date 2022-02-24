@@ -12,7 +12,7 @@ interface Alert {
 
 const Alert: React.FC<Alert> = ({ message, onClose, hasAction, onAction }) => {
 	return (
-		<div className="Alert">
+		<div className="Alert" data-testid="alert-modal">
 			<div className="alert-box">
 				
 				<div className="header">

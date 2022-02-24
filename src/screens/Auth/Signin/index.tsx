@@ -15,9 +15,8 @@ import './styles.css';
 const Signin: React.FC<RouteComponentProps> = ({ history }) => {
 
 	const {
-		userContextError,
 		signin,
-		signup,
+		userContextError,
 		createUserContextError,
 		clearUserContextError
 	} = useContext<UserContextType>(UserContext);
@@ -52,7 +51,15 @@ const Signin: React.FC<RouteComponentProps> = ({ history }) => {
 						
 						<div className="input-box">
 							<FiMail size={ 24 } className="icon" />
-							<input type="email" name="email" placeholder="E-mail" value={ email } onChange={ ev => setEmail(ev.target.value) } />
+
+							<input
+								data-testid="email-input"
+								type="email"
+								name="email"
+								placeholder="E-mail"
+								value={ email }
+								onChange={ ev => setEmail(ev.target.value) }
+							/>
 						</div>
 						<div className="input-box margin">
 							{
@@ -62,7 +69,14 @@ const Signin: React.FC<RouteComponentProps> = ({ history }) => {
 									<FiLock size={ 24 } className="icon" onClick={ () => setShowPassword(true) } />
 								)
 							}
-							<input type={ showPassword ? 'text' : 'password' } name="password" placeholder="Senha" value={ password } onChange={ ev => setPassword(ev.target.value) } />
+
+							<input
+								data-testid="password-input"
+								type={ showPassword ? 'text' : 'password' }
+								name="password"
+								placeholder="Senha"
+								value={ password } onChange={ ev => setPassword(ev.target.value) }
+							/>
 						</div>
 
 						<div className="forgot-password">
@@ -76,7 +90,7 @@ const Signin: React.FC<RouteComponentProps> = ({ history }) => {
 							Criar Conta
 						</button>
 
-						<button className="btn btn-primary" onClick={ handleSignin }>
+						<button data-testid="signin-button" className="btn btn-primary" onClick={ handleSignin }>
 							Entrar
 						</button>
 					</div>
