@@ -3,10 +3,6 @@ import { NoteType, HttpResponse } from '../utils/types';
 
 import server from '../services/server';
 
-interface NoteProviderProps {
-	initialNotes?: Array<NoteType>;
-}
-
 export interface NoteContextType {
 	notesArray: Array<NoteType>;
 	noteContextError: string;
@@ -35,9 +31,9 @@ export interface NoteContextType {
 
 const NoteContext: React.Context<NoteContextType | any> = createContext({});
 
-export const NoteProvider: React.FC<NoteProviderProps> = ({ initialNotes, children }) => {
+export const NoteProvider: React.FC = ({ children }) => {
 	
-	const [ notesArray, setNotesArray ] = useState<Array<NoteType>>(initialNotes || []);
+	const [ notesArray, setNotesArray ] = useState<Array<NoteType>>([]);
 	const [ noteContextError, setNoteContextError ] = useState<string>('');
 
 	const getNotes = async (id_user: number, id_status: string) => {

@@ -3,10 +3,6 @@ import { StatusType } from '../utils/types';
 
 import server from '../services/server';
 
-interface StatusProviderProps {
-	initialState?: Array<StatusType>;
-}
-
 export interface StatusContextType {
 	statusArray: Array<StatusType>;
 	statusContextError: string;
@@ -19,9 +15,9 @@ export interface StatusContextType {
 
 const StatusContext: React.Context<StatusContextType | any> = createContext({});
 
-export const StatusProvider: React.FC<StatusProviderProps> = ({ initialState, children }) => {
+export const StatusProvider: React.FC = ({ children }) => {
 	
-	const [ statusArray, setStatusArray ] = useState<Array<StatusType>>(initialState || []);
+	const [ statusArray, setStatusArray ] = useState<Array<StatusType>>([]);
 	const [ statusContextError, setStatusContextError ] = useState<string>('');
 
 	const getStatus = async () => {

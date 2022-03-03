@@ -3,9 +3,6 @@ import React, { useState, useEffect, createContext } from 'react';
 import server from '../services/server';
 import { HttpResponse, UserType } from '../utils/types';
 
-interface UserProviderProps {
-	initialUser?: UserType;
-}
 export interface UserContextType {
 	user: UserType;
 	userContextError: string;
@@ -21,9 +18,9 @@ export interface UserContextType {
 
 const UserContext: React.Context<UserContextType | any> = createContext({});
 
-export const UserProvider: React.FC<UserProviderProps> = ({ initialUser, children }) => {
+export const UserProvider: React.FC = ({ children }) => {
 	
-	const [ user, setUser ] = useState<UserType | any>(initialUser || null);
+	const [ user, setUser ] = useState<UserType | any>(null);
 	const [ userContextError, setUserContextError ] = useState<string>('');
 
 	useEffect(() => {
